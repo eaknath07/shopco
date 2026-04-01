@@ -7,18 +7,12 @@ revolte:
       summarize: false
       suggestFixes: true
       commentStyle: Concise
-    codeQuality:
-      codeStyle:
-        rules:
-          javascript/noUndef: warn
-          javascript/noUnusedVars: warn
     testSuite:
       command: npm run test
   env:
     staging:
       branch: main
       codeReview: true
-      codeQuality: true
       testSuite: true
       services:
         rid_1:
@@ -48,7 +42,6 @@ revolte:
     qa:
       branch: main
       codeReview: false
-      codeQuality: false
       testSuite: false
       services:
         rid_1:
@@ -61,7 +54,7 @@ revolte:
             loadBalancerMode: dedicated
             variables:
               BASE_URL: /api/v1
-              DATABASE_URL: '#{db.dbUrl}'
+              DATABASE_URL: '#{db.dbConnectionString}'
               DATABASE_PORT: '#{db.dbPort}'
               DATABASE_USERNAME: '#{db.dbUsername}'
               DATABASE_PASSWORD: '#{db.dbPassword}'
@@ -81,7 +74,6 @@ revolte:
     production:
       branch: main
       codeReview: false
-      codeQuality: false
       testSuite: false
       services:
         rid_1:
@@ -94,7 +86,7 @@ revolte:
             loadBalancerMode: dedicated
             variables:
               BASE_URL: /api/v1
-              DATABASE_URL: '#{db.dbUrl}'
+              DATABASE_URL: '#{db.dbConnectionString}'
               DATABASE_PORT: '#{db.dbPort}'
               DATABASE_USERNAME: '#{db.dbUsername}'
               DATABASE_PASSWORD: '#{db.dbPassword}'
@@ -125,7 +117,6 @@ revolte:
             engine: postgres
     preview:
       codeReview: false
-      codeQuality: false
       testSuite: false
       services:
         rid_1:
@@ -138,7 +129,7 @@ revolte:
             loadBalancerMode: dedicated
             variables:
               BASE_URL: /api/v1
-              DATABASE_URL: '#{db.dbUrl}'
+              DATABASE_URL: '#{db.dbConnectionString}'
               DATABASE_PORT: '#{db.dbPort}'
               DATABASE_USERNAME: '#{db.dbUsername}'
               DATABASE_PASSWORD: '#{db.dbPassword}'
